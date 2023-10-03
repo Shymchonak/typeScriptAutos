@@ -2,10 +2,10 @@
   "name": "TStest",
   "version": "1.0.0",
   "module": "es6",
-  "description": "First try",
+  "description": "First",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --require ts-node/register src/tests/Test.test.ts --reporter mocha-allure-reporter"
+    "test": "mocha --require ts-node/register src/tests/tests.ts"
   },
   "dependencies": {
     "allure-mocha": "^2.4.0",
