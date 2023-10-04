@@ -1,4 +1,5 @@
 import {Constants} from "../Pages/Constants";
+import { LoginLocators } from "../Pages/Locators";
 import {MainPage} from "../Pages/MainPage";
 
 const mainPage = new MainPage()
@@ -17,13 +18,26 @@ const mainPage = new MainPage()
 
     after(async function () {
         await mainPage.driver.quit()
-
     });
 
 
-    it('Login check', async function() {
+    // it('Login check', async function() {
+    //     this.timeout(0)
+    //     await mainPage.openPage(Constants.url)
+    //     await mainPage.login(Constants.valid_email, Constants.valid_password)
+    //     await mainPage.checkLogout()
+    // });
+
+    // it('Alert check', async function() {
+    //     this.timeout(0)
+    //     await mainPage.openPage(Constants.url)
+    //     await mainPage.login(Constants.invalid_email, Constants.invalid_password)
+    //     await mainPage.checkInvalidInput()
+    // });
+
+    it('Add new community', async function() {
         this.timeout(0)
         await mainPage.openPage(Constants.url)
         await mainPage.login(Constants.valid_email, Constants.valid_password)
-
-    })
+        await mainPage.addCommunity()
+    });
