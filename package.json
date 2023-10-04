@@ -1,20 +1,20 @@
 {
-  "name": "TStest",
+  "name": "test",
   "version": "1.0.0",
   "module": "es6",
   "description": "First",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --require ts-node/register src/tests/tests.ts"
+    "test": "mocha --require ts-node/register src/Tests/Tests.ts"
   },
   "dependencies": {
+    "@types/mocha": "^10.0.1",
+    "@types/selenium-webdriver": "^4.1.15",
     "allure-mocha": "^2.4.0",
     "mocha": "^10.2.0",
     "mocha-allure-reporter": "^1.4.0",
-    "@types/selenium-webdriver": "^4.1.15",
     "selenium-webdriver": "^4.10.0",
     "ts-node": "^10.9.1",
-    "@types/mocha": "^10.0.1",
-    "typescript": "^5.1.6"
+    "typescript": "^5.2.2"
   }
 }
