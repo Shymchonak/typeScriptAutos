@@ -18,8 +18,18 @@ options.addArguments('--disable-dev-shm-usage');
 
 export class BasePage{
 
-    //public driver = new Builder().forBrowser('chrome').setChromeOptions(options).build();
-     public driver= new Builder().withCapabilities(Capabilities.chrome()).build(); 
+    public driver: WebDriver;
+
+    constructor() {
+     this.driver = new Builder().withCapabilities(Capabilities.chrome()).build();
+    }
+    //public driver = new Builder().forBrowser('chrome').build();
+     //public driver = new Builder().withCapabilities(Capabilities.chrome()).build(); 
+
+     async createDriver(){
+        this.driver = new Builder().withCapabilities(Capabilities.chrome()).build();
+            return this.driver
+     }
 
     async openPage (url:string){
         Utils.delay(Constants.delay)
@@ -42,6 +52,14 @@ export class BasePage{
         await box.sendKeys(meaning)
     }
 
+    async validationField(locator:any,meaning:string) {
+        await Utils.delay(Constants.delay)
+        let inputField = await this.findThisElement(locator)
+            const givenValue = await inputField.getAttribute('value')
+            if (givenValue !== meaning) {
+                throw new Error('Field value does not match expected value');
+        }
+    }  
 
 
 }

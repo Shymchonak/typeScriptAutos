@@ -1,10 +1,12 @@
 import {Constants} from "../Pages/Constants";
 import { LoginLocators } from "../Pages/Locators";
 import {MainPage} from "../Pages/MainPage";
+import { BasePage } from "../Pages/BasePage";
 
 const mainPage = new MainPage()
 
-    afterEach(function () {
+describe('Community Test', function () {
+    afterEach(async function () {
         let testCaseName: string | undefined = this.currentTest?.title;
         let testCaseStatus: "failed" | "passed" | "pending" | undefined = this.currentTest?.state;
         if (testCaseStatus === "failed") {
@@ -14,12 +16,14 @@ const mainPage = new MainPage()
         } else {
             console.log(`Test: ${testCaseName}, Status: Unknown!`);
         }
-    });
-
-    after(async function () {
         await mainPage.driver.quit()
     });
 
+    before(async function () {
+        await mainPage.driver.quit()
+    });
+
+    beforeEach(async function () {await mainPage.createDriver()})
 
     // it('Login check', async function() {
     //     this.timeout(0)
@@ -41,3 +45,4 @@ const mainPage = new MainPage()
         await mainPage.login(Constants.valid_email, Constants.valid_password)
         await mainPage.addCommunity()
     });
+});
